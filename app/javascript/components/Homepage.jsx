@@ -5,17 +5,28 @@ const Homepage = () => {
 
   return (
     <div 
-      className='vh-100 d-flex justify-content-center align-items-center'
-      style={{ backgroundColor: '#FFD400' }}
+      className='vh-100 d-flex flex-col justify-content-center align-items-center'
     >
-      <h1 className='absolute top-4 font-weight-bold text-2xl text-blue-900'>Brain Bytes</h1>
-      <div className='w-75 h-75 bg-white rounded-xl flex-col d-flex shadow-2xl border-4 border-blue-900'>
+      <header className='w-100 border-bottom border-blue-900'>
+        <h1 className='p-3 text-center'>Brain Bytes</h1>
+      </header>
+      
+      <div className='w-100 overflow-scroll'>
 
-        <Input />
+        <div className='p-2 border-top border-bottom'>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+        </div>
 
-        <div className='border-bottom mt-4'></div>
+        <div className='p-2 border-top border-bottom'>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+        </div>
+
+        <div className='p-2 border-top border-bottom'>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est</p>
+        </div>
 
       </div>
+
     </div>
   )
 };
