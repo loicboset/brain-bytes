@@ -27,6 +27,13 @@ const Homepage = () => {
 
       </div>
 
+      <div 
+        className='absolute bottom-5 right-5 border border-blue-700 bg-blue-100 p-2 rounded-2xl'
+        onClick={() => console.log('add brain byte')}
+      >
+        BRAIN
+      </div>
+
     </div>
   )
 };
