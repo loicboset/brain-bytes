@@ -4,7 +4,7 @@ class Api::V1::BytesController < ApplicationController
   # protect_from_forgery with: :null_session
 
   def index
-    bytes = Byte.all
+    bytes = Byte.all.order('created_at DESC')
     render json: ByteSerializer.new(bytes).serializable_hash.to_json
   end
 

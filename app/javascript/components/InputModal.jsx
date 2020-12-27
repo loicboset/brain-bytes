@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { postWithAxios } from './utils/axios';
 
-const InputModal = ({ setModal }) => {
+const InputModal = ({ setModal, bytes, setBytes }) => {
 
   const [input, setInput] = useState('');
 
@@ -11,7 +11,11 @@ const InputModal = ({ setModal }) => {
 
   const handleSubmitByte = () => {
     postWithAxios('/api/v1/bytes', {content: input})
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response.data.data);
+        setBytes([response.data.data, ...bytes]);
+        setModal(false);
+      })
       .catch((error) => console.log(error))
   };
 

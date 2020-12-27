@@ -5,7 +5,7 @@ import { getWithAxios } from './utils/axios';
 const Homepage = () => {
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
-
+  console.log(bytes);
   useEffect(() => {
     getWithAxios('/api/v1/bytes')
       .then((response) => setBytes(response.data.data))
@@ -40,7 +40,7 @@ const Homepage = () => {
 
 
       </div>
-      {modal && <InputModal setModal={setModal} />}
+      {modal && <InputModal bytes={bytes} setBytes={setBytes} setModal={setModal} />}
     </>
   )
 };
