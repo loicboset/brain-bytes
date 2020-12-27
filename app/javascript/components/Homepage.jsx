@@ -3,6 +3,7 @@ import InputModal from './InputModal';
 import { getWithAxios } from './utils/axios';
 
 const Homepage = () => {
+  const [menu, setMenu] = useState(false);
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
   console.log(bytes);
@@ -14,11 +15,19 @@ const Homepage = () => {
 
   return (
     <>
-      <div
-        className='vh-100 d-flex flex-col justify-content-center align-items-center'
-      >
-        <header className='w-100 border-bottom border-blue-900'>
+      <div className='vh-100 d-flex flex-col justify-content-center align-items-center'>
+        <header className='w-100 border-bottom border-blue-900 d-flex justify-between align-items-center'>
           <h1 className='p-3 text-center'>Brain Bytes</h1>
+          <div className='relative'>
+            <img
+              src={`https://eu.ui-avatars.com/api/?name=Elon+Musk&rounded=true`}
+              className='w-8 mr-3'
+              onClick={() => setMenu(!menu)}
+            />
+            <div className={`absolute border right-2 mt-1 bg-white ${menu ? 'd-block' : 'hidden'}`}>
+              <a href='/users/sign_out' data-method="delete" className='px-10 py-1 w-max d-block'>Log out</a>
+            </div>
+          </div>
         </header>
 
         <div className='w-100 overflow-scroll'>

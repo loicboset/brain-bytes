@@ -12,7 +12,6 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
   const handleSubmitByte = () => {
     postWithAxios('/api/v1/bytes', {content: input})
       .then((response) => {
-        console.log(response.data.data);
         setBytes([response.data.data, ...bytes]);
         setModal(false);
       })
