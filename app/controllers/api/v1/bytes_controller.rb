@@ -9,7 +9,7 @@ class Api::V1::BytesController < ApplicationController
   end
 
   def create
-    byte = byte.create(byte_params)
+    byte = Byte.create(byte_params)
     if byte.save
       render json: ByteSerializer.new(byte).serializable_hash.to_json
     else

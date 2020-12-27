@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import InputModal from './InputModal';
+import { getWithAxios } from './utils/axios';
 
 const Homepage = () => {
-  const axios = require('axios');
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/v1/bytes')
+    getWithAxios('/api/v1/bytes')
       .then((response) => setBytes(response.data.data))
       .catch((error) => console.log(error))
   }, []);

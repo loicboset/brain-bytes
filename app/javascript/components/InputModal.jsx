@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { postWithAxios } from './utils/axios';
 
 const InputModal = ({ setModal }) => {
 
-  const axios = require('axios');
   const [input, setInput] = useState('');
 
   const handleChangeInput = (e) => {
@@ -10,7 +10,7 @@ const InputModal = ({ setModal }) => {
   };
 
   const handleSubmitByte = () => {
-    axios.post('/api/v1/bytes', {content: input})
+    postWithAxios('/api/v1/bytes', {content: input})
       .then((response) => console.log(response))
       .catch((error) => console.log(error))
   };
