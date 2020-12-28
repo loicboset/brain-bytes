@@ -9,12 +9,10 @@ import {
 } from "react-router-dom";
 
 const App = () => (
-  <Router>
-    <Switch>
-      <PrivateRoute exact path='/' component={Homepage}/>
-      <Route exact path='/login' component={Login}/>
-    </Switch>
-  </Router>
+  <Switch>
+    <PrivateRoute exact path='/bytes' component={Homepage}/>
+    {/* <Route exact path='/login' component={Login}/> */}
+  </Switch>
 );
 
 export default App;
