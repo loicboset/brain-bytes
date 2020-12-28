@@ -3,8 +3,8 @@ import { postWithAxios } from './utils/axios';
 
 const InputModal = ({ setModal, bytes, setBytes }) => {
 
+  const isLogin = BrainBytes.user.id;
   const [input, setInput] = useState('');
-
   const handleChangeInput = (e) => {
     setInput(e.target.innerText);
   };
@@ -21,9 +21,9 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
   return (
     <div
       data-id='addBrain'
-      className='vh-100 w-100 d-flex flex-col absolute top-0 left-0 bg-white'
+      className='vh-100 w-100 d-flex flex-col absolute top-0 left-0 bg-bb-dark color-bb-green'
     >
-      <header className='w-100 border-bottom border-blue-900 d-flex justify-content-around'>
+      <header className='w-100 border-bottom border-blue-900 d-flex justify-content-between py-1'>
         <h2 className='border rounded-pill px-3 py-1 m-2 text-center' onClick={() => setModal(false)}>
           Back
         </h2>

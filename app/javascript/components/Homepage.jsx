@@ -15,7 +15,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div className='vh-100 d-flex flex-col justify-content-center align-items-center'>
+      <div className='vh-100 d-flex flex-col justify-content-center align-items-center bg-bb-dark color-bb-green'>
         <header className='w-100 border-bottom border-blue-900 d-flex justify-between align-items-center'>
           <h1 className='p-3 text-center'>Brain Bytes</h1>
           <div className='relative'>
@@ -41,7 +41,7 @@ const Homepage = () => {
         </div>
 
         <div
-          className='absolute bottom-5 right-5 border border-blue-700 bg-blue-100 p-2 rounded-2xl'
+          className='absolute bottom-5 right-5 border border-blue-700 bg-bb-green color-bb-dark p-2 rounded-2xl'
           onClick={() => setModal(true)}
         >
           BRAIN

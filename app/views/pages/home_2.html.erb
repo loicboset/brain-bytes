@@ -1,0 +1,25 @@
+<div class="vh-100">
+  <h2>
+    <h1 class='p-2 font-weight-bolder h3'>Brain Bytes</h1>
+    <br>
+  </h2>
+  <div class="row">
+    <% if user_signed_in? %>
+    <div class="btn bg-archi-primary mt-10 p-2 ml-2 mr-4">
+      <%= link_to "/bytes" do %>
+        <p class="btn-inner-container mb-0 pl-2 pr-2"> Access account </p>
+      <% end %>
+    </div>
+    <% else %>
+    <div class="btn bg-archi-primary mt-10 p-2 ml-2 mr-4">
+      <%= link_to new_user_session_path do %>
+        <p class="btn-inner-container mb-0 pl-2 pr-2"> Sign in </p>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <p class="btn-inner-container mb-0 pl-2 pr-2"> Sign up </p>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+

@@ -10,7 +10,7 @@ import {
 
 const App = () => (
   <Switch>
-    <PrivateRoute exact path='/bytes' component={Homepage}/>
+    <Route exact path='/' component={Homepage}/>
     {/* <Route exact path='/login' component={Login}/> */}
   </Switch>
 );
