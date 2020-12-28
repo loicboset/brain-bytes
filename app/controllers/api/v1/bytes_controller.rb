@@ -1,6 +1,6 @@
 class Api::V1::BytesController < ApplicationController
   # FOR TESTING API
-  skip_before_action :authenticate_user!, only: [ :index ]
+  skip_before_action :authenticate_user!, only: [ :index , :create]
   # protect_from_forgery with: :null_session
 
   def index

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import MDEditor, { commands } from '@uiw/react-md-editor';
 import { postWithAxios } from './utils/axios';
 
 const InputModal = ({ setModal, bytes, setBytes }) => {
 
   const isLogin = BrainBytes.user.id;
   const [input, setInput] = useState('');
+  console.log(input);
   const handleChangeInput = (e) => {
     setInput(e.target.innerText);
   };
@@ -30,18 +32,23 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
         <h2
           className='border rounded-pill px-3 py-1 m-2 text-center'
           onClick={() => handleSubmitByte()}
-        >
-          Add
-        </h2>
+        >Add</h2>
       </header>
 
-      <div className='relative my-4'>
-        <span
+      <div className='relative my-4 p-4'>
+        {/* <span
           className="textarea border-bottom w-75 mx-auto d-block outline-none"
           role="textbox"
           contentEditable
           onInput={(e) => handleChangeInput(e)}
-        ></span>
+        ></span> */}
+        <MDEditor
+          value={input}
+          onChange={setInput}
+          preview={'edit'}
+          commands={[ commands.bold, commands.italic, commands.code ]}
+        />
+        {/* <MDEditor.Markdown source={input} /> */}
       </div>
     </div>
   );
