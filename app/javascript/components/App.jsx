@@ -1,4 +1,5 @@
 import React from 'react'
+import PrivateRoute from './utility/PrivateRoute';
 import Homepage from './Homepage';
 import Login from './Login';
 import {
@@ -10,7 +11,7 @@ import {
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path='/' component={Homepage}/>
+      <PrivateRoute exact path='/' component={Homepage}/>
       <Route exact path='/login' component={Login}/>
     </Switch>
   </Router>
