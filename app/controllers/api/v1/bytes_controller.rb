@@ -1,6 +1,6 @@
 class Api::V1::BytesController < ApplicationController
   # FOR TESTING API
-  skip_before_action :authenticate_user!, only: [ :index , :create]
+  skip_before_action :authenticate_user!, only: [ :index , :create, :update]
   # protect_from_forgery with: :null_session
 
   def index
@@ -10,6 +10,16 @@ class Api::V1::BytesController < ApplicationController
 
   def create
     byte = Byte.create(byte_params)
+    if byte.save
+      render json: ByteSerializer.new(byte).serializable_hash.to_json
+    else
+      render json: { error: byte.errors.messages }, status: 422
+    end
+  end
+
+  def update
+    byte = Byte.find(params[:id])
+    byte.count += 1
     if byte.save
       render json: ByteSerializer.new(byte).serializable_hash.to_json
     else

@@ -4,23 +4,35 @@ import MDEditor, { commands } from '@uiw/react-md-editor';
 // components
 import InputModal from './InputModal';
 import Header from './Header';
-import ReactLogo from './brain.svg';
+import BrainWhite from './brain_white.svg';
+import BrainDark from './brain_dark.svg';
 
 // utils
-import { getWithAxios } from './utils/axios';
+import { getWithAxios, patchWithAxios } from './utils/axios';
 
 const Homepage = () => {
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
   const isLogin = BrainBytes.user.id;
 
-  console.log(ReactLogo);
-
   useEffect(() => {
     getWithAxios('/api/v1/bytes')
-      .then((response) => setBytes(response.data.data))
+      .then((response) => {
+        // console.log(response.data.data);
+        setBytes(response.data.data);
+      })
       .catch((error) => console.log(error))
   }, []);
+
+  const handleAddCount = (id) => {
+    patchWithAxios(`/api/v1/bytes/${id}`, {})
+    .then((response) => {
+      console.log(response);
+      byte = bytes.find(byte => byte.id === id);
+      console.log(byte);
+    })
+    .catch((response) => console.log(response))
+  };
 
   return (
     <>
@@ -32,6 +44,10 @@ const Homepage = () => {
           {bytes.map(byte => (
             <div key={byte.id} className='px-4 py-2 border-top border-bottom'>
               <MDEditor.Markdown source={byte.attributes.content} />
+              <div className='d-flex mt-2'>
+                <img onClick={() => handleAddCount(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
+                <span>{byte.attributes.count ? byte.attributes.count : 0 }</span>
+              </div>
             </div>
           ))}
 
@@ -42,7 +58,7 @@ const Homepage = () => {
           onClick={() => setModal(true)}
         >
           <span className='text-2xl'>+</span>
-          <img className='w-8' src={ReactLogo} alt="Add Brain Byte" />
+          <img className='w-8' src={BrainDark} alt="Brain" />
         </div>
 
 
