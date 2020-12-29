@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_083327) do
+ActiveRecord::Schema.define(version: 2020_12_29_091136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_083327) do
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_12_29_083327) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
