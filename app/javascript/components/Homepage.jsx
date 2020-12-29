@@ -8,12 +8,11 @@ import BrainWhite from './brain_white.svg';
 import BrainDark from './brain_dark.svg';
 
 // utils
-import { getWithAxios, patchWithAxios } from './utils/axios';
+import { getWithAxios, postWithAxios } from './utils/axios';
 
 const Homepage = () => {
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
-  const isLogin = BrainBytes.user.id;
 
   useEffect(() => {
     getWithAxios('/api/v1/bytes')
@@ -23,11 +22,12 @@ const Homepage = () => {
       .catch((error) => console.log(error))
   }, []);
 
-  const handleAddCount = (id) => {
-    patchWithAxios(`/api/v1/bytes/${id}`, {})
+  const handleAddVote = (id) => {
+    postWithAxios(`/api/v1/bytes/${id}/votes`, {})
     .then((response) => {
+      console.log(response);
       const index = bytes.findIndex(byte => byte.id === id);
-      bytes[index].attributes.count = response.data.data.attributes.count;
+      bytes[index].attributes.vote_count = response.data.data.attributes.vote_count;
       setBytes([...bytes]);
     })
     .catch((response) => console.log(response))
@@ -44,8 +44,8 @@ const Homepage = () => {
             <div key={byte.id} className='px-4 py-2 border-top border-bottom'>
               <MDEditor.Markdown source={byte.attributes.content} />
               <div className='d-flex mt-2'>
-                <img onClick={() => handleAddCount(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
-                <span>{byte.attributes.count ? byte.attributes.count : 0 }</span>
+                <img onClick={() => handleAddVote(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
+                <span>{byte.attributes.vote_count }</span>
               </div>
             </div>
           ))}
