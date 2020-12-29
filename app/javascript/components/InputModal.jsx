@@ -35,7 +35,7 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
         >Add</h2>
       </header>
 
-      <div className='relative my-4 p-4'>
+      <div className='relative my-4 p-4 w-full md:w-10/12 lg:w-1/2 mx-auto'>
         <MDEditor
           value={input}
           onChange={setInput}

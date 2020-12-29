@@ -35,13 +35,13 @@ const Homepage = () => {
 
   return (
     <>
-      <div className='vh-100 d-flex flex-col justify-content-center align-items-center bg-bb-dark color-bb-green'>
+      <div className='vh-100 d-flex flex-col align-items-center bg-bb-dark color-bb-green'>
         <Header />
 
-        <div className='w-100 overflow-scroll'>
+        <div className='w-full md:w-10/12 lg:w-1/2 overflow-scroll'>
 
           {bytes.map(byte => (
-            <div key={byte.id} className='px-4 py-2 border-top border-bottom'>
+            <div key={byte.id} className='px-4 py-2 border-bottom'>
               <MDEditor.Markdown source={byte.attributes.content} />
               <div className='d-flex mt-2'>
                 <img onClick={() => handleAddVote(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
