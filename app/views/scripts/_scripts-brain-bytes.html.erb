@@ -1,7 +1,9 @@
 <script>
   window.BrainBytes = {
     user: {
-      id: <%= current_user ? current_user.id : false %>
+      id: <%= current_user ? current_user.id : false %>,
+      first_name: "<%= current_user ? current_user.first_name : false %>",
+      last_name: "<%= current_user ? current_user.last_name : false %>"
     }
   }
 </script>

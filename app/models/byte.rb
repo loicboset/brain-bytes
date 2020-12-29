@@ -1,4 +1,5 @@
 class Byte < ApplicationRecord
 
-  attribute :count, :integer, default: 0
+  validates :content, presence: true
+  validates :count, presence: true, numericality: { only_integer: true }
 end

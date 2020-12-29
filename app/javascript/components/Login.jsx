@@ -17,9 +17,6 @@ const Login = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-      <Button variant="primary" type="submit" className='mx-4'>
-        Sign up
-      </Button>
     </Form>
   );
 };

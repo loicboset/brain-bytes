@@ -18,7 +18,6 @@ const Homepage = () => {
   useEffect(() => {
     getWithAxios('/api/v1/bytes')
       .then((response) => {
-        // console.log(response.data.data);
         setBytes(response.data.data);
       })
       .catch((error) => console.log(error))
