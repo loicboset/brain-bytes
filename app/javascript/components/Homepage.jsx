@@ -28,8 +28,9 @@ const Homepage = () => {
     patchWithAxios(`/api/v1/bytes/${id}`, {})
     .then((response) => {
       console.log(response);
-      byte = bytes.find(byte => byte.id === id);
-      console.log(byte);
+      const index = bytes.findIndex(byte => byte.id === id);
+      bytes[index].attributes.count = response.data.data.attributes.count;
+      setBytes([...bytes]);
     })
     .catch((response) => console.log(response))
   };

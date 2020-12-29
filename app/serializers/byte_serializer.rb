@@ -1,4 +1,4 @@
 class ByteSerializer
   include JSONAPI::Serializer
-  attributes :content
+  attributes :content, :count
 end
