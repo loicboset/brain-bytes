@@ -36,19 +36,18 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
       </header>
 
       <div className='relative my-4 p-4'>
-        {/* <span
-          className="textarea border-bottom w-75 mx-auto d-block outline-none"
-          role="textbox"
-          contentEditable
-          onInput={(e) => handleChangeInput(e)}
-        ></span> */}
         <MDEditor
           value={input}
           onChange={setInput}
           preview={'edit'}
           commands={[ commands.bold, commands.italic, commands.code ]}
         />
-        {/* <MDEditor.Markdown source={input} /> */}
+        {!input &&
+          <span
+            className='absolute top-16 text-muted pointer-events-none'
+            style={{ left: '34px' }}
+          >Share your brain</span>
+        }
       </div>
     </div>
   );

@@ -27,7 +27,6 @@ const Homepage = () => {
   const handleAddCount = (id) => {
     patchWithAxios(`/api/v1/bytes/${id}`, {})
     .then((response) => {
-      console.log(response);
       const index = bytes.findIndex(byte => byte.id === id);
       bytes[index].attributes.count = response.data.data.attributes.count;
       setBytes([...bytes]);
