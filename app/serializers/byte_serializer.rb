@@ -9,4 +9,8 @@ class ByteSerializer
   attribute :author do |byte|
     "#{byte.user.first_name} #{byte.user.last_name}"
   end
+
+  attribute :user_id do |byte|
+    byte.user.id
+  end
 end

@@ -10,8 +10,11 @@ import BrainDark from './icons/brain_dark.svg';
 import { getWithAxios, postWithAxios } from './utils/axios';
 
 const Homepage = () => {
+
   const [bytes, setBytes] = useState([]);
   const [modal, setModal] = useState(false);
+
+  const isLogin = !!BrainBytes.user.id;
 
   useEffect(() => {
     getWithAxios('/api/v1/bytes')
@@ -24,7 +27,6 @@ const Homepage = () => {
   const handleAddVote = (id) => {
     postWithAxios(`/api/v1/bytes/${id}/votes`, {})
     .then((response) => {
-      console.log(response);
       const index = bytes.findIndex(byte => byte.id === id);
       bytes[index].attributes.vote_count = response.data.data.attributes.vote_count;
       setBytes([...bytes]);
@@ -51,14 +53,15 @@ const Homepage = () => {
 
         </div>
 
-        <div
-          className='d-flex align-items-center absolute bottom-5 right-5 border border-blue-700 bg-bb-green color-bb-dark p-2 rounded-2xl'
-          onClick={() => setModal(true)}
-        >
-          <span className='text-2xl'>+</span>
-          <img className='w-8' src={BrainDark} alt="Brain" />
-        </div>
-
+        {isLogin &&
+          <div
+            className='d-flex align-items-center absolute bottom-5 right-5 border border-blue-700 bg-bb-green color-bb-dark p-2 rounded-2xl'
+            onClick={() => setModal(true)}
+          >
+            <span className='text-2xl'>+</span>
+            <img className='w-8' src={BrainDark} alt="Brain" />
+          </div>
+        }
 
       </div>
       {modal && <InputModal bytes={bytes} setBytes={setBytes} setModal={setModal} />}

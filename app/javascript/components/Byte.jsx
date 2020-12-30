@@ -11,7 +11,7 @@ import { patchWithAxios } from './utils/axios';
 
 const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
 
-  const isAuthor = !!BrainBytes.user.id;
+  const isAuthor = BrainBytes.user.id === byte.attributes.user_id;
   const [input, setInput] = useState(byte.attributes.content);
   const [editMode, setEditMode] = useState(false);
 

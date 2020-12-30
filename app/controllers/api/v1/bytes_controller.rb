@@ -1,6 +1,6 @@
 class Api::V1::BytesController < ApplicationController
   # FOR TESTING API
-  skip_before_action :authenticate_user!, only: [ :index , :create, :update]
+  skip_before_action :authenticate_user!, only: [ :index ]
   # protect_from_forgery with: :null_session
 
   def index
@@ -9,13 +9,8 @@ class Api::V1::BytesController < ApplicationController
   end
 
   def create
-    if current_user
-      user = current_user
-    else
-      user = User.find_by(email: 'admin@example.com')
-    end
     byte = Byte.new(byte_params)
-    byte.user = user
+    byte.user = current_user
     if byte.save
       render json: ByteSerializer.new(byte).serializable_hash.to_json
     else

@@ -4,10 +4,8 @@ import { postWithAxios } from './utils/axios';
 
 const InputModal = ({ setModal, bytes, setBytes }) => {
 
-  const maxInput = 400;
   const [input, setInput] = useState('');
   const [charCount, setCharCount] = useState(0);
-  const [error, setError] = useState(false);
 
 
   const handleSubmitByte = () => {
@@ -22,7 +20,6 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
   const handleChange = (e) => {
     setCharCount(e.split('').length);
     setInput(e);
-    e.split('').length <= 400 ? setError(false) : setError(true);
   };
 
   return (
