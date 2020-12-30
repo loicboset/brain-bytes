@@ -9,7 +9,11 @@ class Api::V1::BytesController < ApplicationController
   end
 
   def create
-    user = current_user
+    if current_user
+      user = current_user
+    else
+      user = User.find_by(email: 'admin@example.com')
+    end
     byte = Byte.new(byte_params)
     byte.user = user
     if byte.save
