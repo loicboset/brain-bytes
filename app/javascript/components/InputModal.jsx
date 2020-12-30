@@ -6,10 +6,6 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
 
   const isLogin = BrainBytes.user.id;
   const [input, setInput] = useState('');
-  console.log(input);
-  const handleChangeInput = (e) => {
-    setInput(e.target.innerText);
-  };
 
   const handleSubmitByte = () => {
     postWithAxios('/api/v1/bytes', {content: input})

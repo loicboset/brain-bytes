@@ -40,7 +40,13 @@ const Homepage = () => {
         <div className='w-full md:w-10/12 lg:w-1/2 overflow-scroll'>
 
           {bytes.map(byte => (
-            <Byte key={byte.id} byte={byte} handleAddVote={handleAddVote} />
+            <Byte
+              key={byte.id}
+              byte={byte}
+              bytes={bytes}
+              setBytes={setBytes}
+              handleAddVote={handleAddVote}
+            />
           ))}
 
         </div>

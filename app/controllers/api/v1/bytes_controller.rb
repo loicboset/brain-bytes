@@ -19,8 +19,7 @@ class Api::V1::BytesController < ApplicationController
 
   def update
     byte = Byte.find(params[:id])
-    byte.count += 1
-    if byte.save
+    if byte.update(byte_params)
       render json: ByteSerializer.new(byte).serializable_hash.to_json
     else
       render json: { error: byte.errors.messages }, status: 422
