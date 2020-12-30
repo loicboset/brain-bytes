@@ -1,5 +1,8 @@
 class Byte < ApplicationRecord
-  has_many :votes
+
+  belongs_to :user
+  has_many :votes, dependent: :destroy
 
   validates :content, presence: true
+  validates :user_id, presence: true
 end

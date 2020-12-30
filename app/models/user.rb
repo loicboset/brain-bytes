@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  has_many :bytes
   has_many :votes
 
   # Include default devise modules. Others available are:

@@ -47,7 +47,7 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
           {editMode && <img className='w-4 ml-2' src={Save} onClick={() => handleSave(byte.id)} />}
           {isAuthor
             ? <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
-            : <span className='text-xs font-weight-light'>by author name</span>
+            : <span className='text-xs font-weight-light'>by {byte.attributes.author}</span>
           }
         </div>
       </div>
