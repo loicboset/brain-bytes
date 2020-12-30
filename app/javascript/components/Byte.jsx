@@ -45,8 +45,9 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
         </div>
         <div className='d-flex align-items-center' >
           {editMode && <img className='w-4 ml-2' src={Save} onClick={() => handleSave(byte.id)} />}
-          {isAuthor &&
-            <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
+          {isAuthor
+            ? <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
+            : <span className='text-xs font-weight-light'>by author name</span>
           }
         </div>
       </div>
