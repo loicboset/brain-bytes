@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import MDEditor, { commands } from '@uiw/react-md-editor';
 
 // components
 import InputModal from './InputModal';
 import Header from './Header';
-import BrainWhite from './brain_white.svg';
-import BrainDark from './brain_dark.svg';
+import Byte from './Byte';
+import BrainDark from './icons/brain_dark.svg';
 
 // utils
 import { getWithAxios, postWithAxios } from './utils/axios';
@@ -41,13 +40,7 @@ const Homepage = () => {
         <div className='w-full md:w-10/12 lg:w-1/2 overflow-scroll'>
 
           {bytes.map(byte => (
-            <div key={byte.id} className='px-4 py-2 border-bottom'>
-              <MDEditor.Markdown source={byte.attributes.content} />
-              <div className='d-flex align-items-center mt-2'>
-                <img onClick={() => handleAddVote(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
-                <span>{byte.attributes.vote_count }</span>
-              </div>
-            </div>
+            <Byte key={byte.id} byte={byte} handleAddVote={handleAddVote} />
           ))}
 
         </div>
