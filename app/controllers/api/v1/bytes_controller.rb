@@ -30,6 +30,6 @@ class Api::V1::BytesController < ApplicationController
   private
 
   def byte_params
-    params.permit(:content)
+    params.permit(:title, :content)
   end
 end

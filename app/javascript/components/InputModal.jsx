@@ -5,16 +5,19 @@ import { postWithAxios } from './utils/axios';
 const InputModal = ({ setModal, bytes, setBytes }) => {
 
   const [input, setInput] = useState('');
+  const [title, setTitle] = useState('');
   const [charCount, setCharCount] = useState(0);
 
 
   const handleSubmitByte = () => {
-    postWithAxios('/api/v1/bytes', {content: input})
-      .then((response) => {
-        setBytes([response.data.data, ...bytes]);
-        setModal(false);
-      })
-      .catch((error) => console.log(error))
+    if (input && title) {
+      postWithAxios('/api/v1/bytes', {content: input, title: title})
+        .then((response) => {
+          setBytes([response.data.data, ...bytes]);
+          setModal(false);
+        })
+        .catch((error) => console.log(error))
+    }
   };
 
   const handleChange = (e) => {
@@ -39,7 +42,19 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
       </header>
 
       <div className='relative my-4 p-4 w-full md:w-10/12 lg:w-1/2 mx-auto'>
+        <label className='color-bb-green' htmlFor="title">Title</label>
+        <input
+          type="text" id="title" name="title" required
+          minLength="4" maxLength="40"
+          placeholder='Meaningfully short title'
+          className='w-full mb-4 p-1 color-bb-dark'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label className='color-bb-green' htmlFor="content">Content</label>
         <MDEditor
+          name='content'
+          title='content'
           value={input}
           onChange={(e) => handleChange(e)}
           preview={'edit'}
@@ -47,8 +62,8 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
         />
         {!input &&
           <span
-            className='absolute top-16 text-muted pointer-events-none'
-            style={{ left: '34px' }}
+            className='absolute text-muted pointer-events-none'
+            style={{ left: '34px', top: '185px', fontSize: '14px' }}
           >Share your brain (400 charachaters max.)</span>
         }
         <p className={`text-right ${charCount > 400 ? 'text-danger' : ''}`}>{charCount}/400</p>

@@ -13,14 +13,15 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
 
   const isAuthor = BrainBytes.user.id === byte.attributes.user_id;
   const [input, setInput] = useState(byte.attributes.content);
+  const [title, setTitle] = useState(byte.attributes.title);
   const [editMode, setEditMode] = useState(false);
 
   const handleSave = (id) => {
-    patchWithAxios(`/api/v1/bytes/${id}`, {content: input})
+    patchWithAxios(`/api/v1/bytes/${id}`, {content: input, title: title})
     .then(response => {
       const copyBytes = [...bytes];
       const byte = copyBytes.find(copyByte => parseInt(copyByte.id, 10) === parseInt(id, 10));
-      byte.attributes.content = response.data.data.attributes.content;
+      byte.attributes = response.data.data.attributes;
       setBytes([...copyBytes]);
       setEditMode(false);
     })
@@ -29,6 +30,17 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
 
   return (
     <div className='px-4 py-2 border-bottom'>
+      {editMode
+        ? <input
+            type="text" id="title" name="title" required
+            minLength="4" maxLength="40"
+            placeholder='Meaningfully short title'
+            className='w-full mb-4 p-1 color-bb-dark'
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        : <p className='font-weight-bold text-lg'>{byte.attributes.title}</p>
+      }
       {editMode
         ? <MDEditor
             value={input}
