@@ -29,7 +29,7 @@ const Header = () => {
   );
 
   return (
-    <header className='w-100 border-bottom border-blue-900 d-flex justify-between align-items-center'>
+    <header className='w-100 p-3 border-bottom border-blue-900 d-flex justify-between align-items-center'>
       <h1 className='p-3 text-center font-weight-bold text-xl'>Brain Bytes</h1>
 
       {isLogin ? loggedIn() : loggedOut()}
