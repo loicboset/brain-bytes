@@ -21,8 +21,8 @@ const Header = () => {
   );
 
   const loggedOut = () => (
-    <a href='/users/sign_in' >
-      <button className='border rounded-pill px-2 py-1 mr-3'>
+    <a className='p-3' href='/users/sign_in' >
+      <button className='border rounded-pill px-2 py-1'>
         Login / Sign up
       </button>
     </a>
