@@ -18,7 +18,6 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
   const handleSave = (id) => {
     patchWithAxios(`/api/v1/bytes/${id}`, {content: input})
     .then(response => {
-      console.log(response);
       const copyBytes = [...bytes];
       const byte = copyBytes.find(copyByte => parseInt(copyByte.id, 10) === parseInt(id, 10));
       byte.attributes.content = response.data.data.attributes.content;
@@ -44,10 +43,12 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
           <img onClick={() => handleAddVote(byte.id)} className='w-4 mr-1' src={BrainWhite} alt="Brain" />
           <span>{byte.attributes.vote_count}</span>
         </div>
-        {editMode && <img className='w-4 ml-2' src={Save} onClick={() => handleSave(byte.id)} />}
-        {isAuthor &&
-          <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
-        }
+        <div className='d-flex align-items-center' >
+          {editMode && <img className='w-4 ml-2' src={Save} onClick={() => handleSave(byte.id)} />}
+          {isAuthor &&
+            <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
+          }
+        </div>
       </div>
     </div>
   )
