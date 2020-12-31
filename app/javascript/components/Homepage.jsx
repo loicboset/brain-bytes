@@ -55,7 +55,10 @@ const Homepage = () => {
 
         {isLogin &&
           <div
-            className='d-flex align-items-center absolute bottom-5 right-5 border border-blue-700 bg-bb-green color-bb-dark p-2 rounded-2xl'
+          className='d-flex align-items-center
+            absolute bottom-5 right-5 border border-blue-700 bg-bb-green color-bb-dark
+            p-2 rounded-2xl transform-gpu hover:scale-110 motion-reduce:transform-none
+            transition duration-500 cursor-pointer'
             onClick={() => setModal(true)}
           >
             <span className='text-2xl'>+</span>
