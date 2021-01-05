@@ -10,7 +10,6 @@ import Save from './icons/save.svg';
 import { patchWithAxios } from './utils/axios';
 
 const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
-  console.log(byte);
   const isAuthor = BrainBytes.user.id === byte.attributes.user_id;
   const [input, setInput] = useState(byte.attributes.content);
   const [title, setTitle] = useState(byte.attributes.title);
