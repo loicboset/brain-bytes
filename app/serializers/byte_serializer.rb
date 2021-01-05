@@ -1,6 +1,6 @@
 class ByteSerializer
   include JSONAPI::Serializer
-  attributes :title, :content
+  attributes :title, :content, :created_at
 
   attribute :vote_count do |byte|
     byte.votes.length

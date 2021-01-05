@@ -7,8 +7,7 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
   const [input, setInput] = useState('');
   const [title, setTitle] = useState('');
   const [charCount, setCharCount] = useState(0);
-
-
+  const windowWidth = window.screen.width;
   const handleSubmitByte = () => {
     if (input && title) {
       postWithAxios('/api/v1/bytes', {content: input, title: title})
@@ -57,7 +56,7 @@ const InputModal = ({ setModal, bytes, setBytes }) => {
           title='content'
           value={input}
           onChange={(e) => handleChange(e)}
-          preview={'edit'}
+          preview={windowWidth >= 768 ? 'live' : 'edit'}
           commands={[ commands.bold, commands.italic, commands.code ]}
         />
         {!input &&

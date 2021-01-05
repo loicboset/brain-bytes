@@ -10,7 +10,7 @@ import Save from './icons/save.svg';
 import { patchWithAxios } from './utils/axios';
 
 const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
-
+  console.log(byte);
   const isAuthor = BrainBytes.user.id === byte.attributes.user_id;
   const [input, setInput] = useState(byte.attributes.content);
   const [title, setTitle] = useState(byte.attributes.title);
@@ -27,6 +27,15 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
     })
     .catch(error => console.log(error))
   };
+
+  const getFormattedDate = (date) => {
+    date = new Date(date);
+    let year = date.getFullYear();
+    let month = (1 + date.getMonth()).toString().padStart(2, '0');
+    let day = date.getDate().toString().padStart(2, '0');
+
+    return month + '/' + day + '/' + year;
+  }
 
   return (
     <div className='px-4 py-2 border-bottom'>
@@ -59,7 +68,9 @@ const Byte = ({ byte, handleAddVote, bytes, setBytes }) => {
           {editMode && <img className='w-4 ml-2' src={Save} onClick={() => handleSave(byte.id)} />}
           {isAuthor
             ? <img className='w-4 ml-2' src={Pen} onClick={() => setEditMode(!editMode)} />
-            : <span className='text-xs font-weight-light'>by {byte.attributes.author}</span>
+            : <span className='text-xs font-weight-light'>
+              by {byte.attributes.author} ({getFormattedDate(byte.attributes.created_at)})
+              </span>
           }
         </div>
       </div>
